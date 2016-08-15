@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Maps-Project 5</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="container">
+        <div class="options-box">
+        <h1>Pizza</h1>
+            <form>
+               Enter your pizza store:
+                <input type="search" name="store" data-bind="textInput: filterText" autocomplete="off" >
+                <ul data-bind="template: {name:'pizzaStore', foreach: search}"></ul>
+
+                <script type="text/html" id ="pizzaStore">
+                <li data-bind= "click: $parent.showMarker">
+                <span data-bind="text: title"></span>
+                </li>
+              </script>
+            </form>
+        </div>
+    </div>
+    <script type= "text/javascript" src="js/oauth-signature.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkW81gbgnxlQ1OIvMLmVPDPRJHR_NnoyQ&v=3&callback=initMap" onerror="error()">
+    </script>
+</body>
+</html>
