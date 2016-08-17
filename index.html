@@ -2,35 +2,67 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Maps-Project 5</title>
     <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
-    <div id="map"></div>
-    <div class="container">
-        <div class="options-box">
+  <div id="wrapper" class="toggled">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
         <h1>Pizza</h1>
-            <form>
-               Enter your pizza store:
-                <input type="search" name="store" data-bind="textInput: filterText" autocomplete="off" >
-                <ul data-bind="template: {name:'pizzaStore', foreach: search}"></ul>
-
-                <script type="text/html" id ="pizzaStore">
-                <li data-bind= "click: $parent.showMarker">
-                <span data-bind="text: title"></span>
-                </li>
-              </script>
-            </form>
-        </div>
+        <form>
+          Enter your pizza store:
+          <input type="search" name="store" data-bind="textInput: filterText" autocomplete="off" >
+          <ul data-bind="template: {name:'pizzaStore', foreach: search}"></ul>
+          <script type="text/html" id ="pizzaStore">
+            <li data-bind= "click: $parent.showMarker">
+              <span data-bind="text: title" class = "clickable"></span>
+            </li>
+          </script>
+        </form>
     </div>
+    
+    <div>
+      <a href="#menu-toggle" class="btn btn-default toggleMenu" id="menu-toggle">Toggle Menu</a>
+    </div>
+    
+    <!--Page Content-->
+    <div id="page-content-wrapper">
+      <div id="map"></div>
+      
+      <!--<div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            
+            
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+    
+    
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script type= "text/javascript" src="js/oauth-signature.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkW81gbgnxlQ1OIvMLmVPDPRJHR_NnoyQ&v=3&callback=initMap" onerror="error()">
+    </script>
+    
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
     </script>
 </body>
 </html>
